@@ -8,8 +8,17 @@ use Illuminate\Support\Facades\Storage;
 
 
 class BarcoController extends Controller {
-    public function index() {
-        $barcos = Barco::paginate(6); // Mostramos 6 barcos por página
+    public function index(Request $request) {
+
+        $query = Barco::query();
+
+        // Si hay un término de búsqueda, filtramos por nombre
+        if ($request->has('search')) {
+            $query->where('nombre', 'like', '%' . $request->search . '%');
+        }
+
+        $barcos = $query->paginate(6); // Mostramos 6 barcos por página o la busqueda
+        //$barcos = Barco::paginate(6);  Mostramos 6 barcos por página
         //$barcos = Barco::all();  Obtener todos los barcos
         return view('dashboard', compact('barcos')); // Pasar los datos a la vista del dashboard
     }

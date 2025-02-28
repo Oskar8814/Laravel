@@ -10,8 +10,18 @@
 
             <!-- Sección para la Lista de Barcos -->
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-6 p-6">
+
                 <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Lista de Barcos</h2>
-                
+                <!-- Formulario de Búsqueda -->
+                <form method="GET" action="{{ route('dashboard') }}" class="mb-4">
+                    <div class="flex">
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Buscar barco..." 
+                            class="w-full p-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-grey-500">
+                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white p-2 rounded-r-md">
+                            Buscar
+                        </button>
+                    </div>
+                </form>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($barcos as $barco)
                         <div class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg p-4">
