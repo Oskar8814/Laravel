@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Storage;
 
 class BarcoController extends Controller {
     public function index() {
-        $barcos = Barco::all(); // Obtener todos los barcos
+        $barcos = Barco::paginate(6); // Mostramos 6 barcos por página
+        //$barcos = Barco::all();  Obtener todos los barcos
         return view('dashboard', compact('barcos')); // Pasar los datos a la vista del dashboard
     }
 

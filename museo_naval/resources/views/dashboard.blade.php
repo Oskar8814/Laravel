@@ -43,7 +43,11 @@
                         </div>
                     @endforeach
                 </div>
-                
+                <!-- Paginación -->
+                <div class="mt-6">
+                    {{ $barcos->links() }}
+                </div>
+
             </div>
 
         </div>
